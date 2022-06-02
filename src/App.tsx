@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Login />
+        <Login  />
       </ThemeProvider>
     </>
   );
