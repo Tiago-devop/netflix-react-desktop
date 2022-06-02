@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Button = styled.button`
   width: 100%;
   padding: 9px;
   margin: 0 0 22px;
-  color: #fff;
   border-radius: 5px;
-  background: #e31a13;
+  background: ${(props) => props.theme.palette.core.primary};
+  color: ${(props) => props.theme.palette.typography.primary};
   border: 0;
 `;

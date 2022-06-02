@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
 export const Error = styled.p`
-  color: #e31a13;
+  color: ${props => props.theme.palette.core.primary};
   font-weight: 800;
 `;
