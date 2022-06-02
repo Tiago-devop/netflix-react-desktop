@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-import { Button, Input, Wrapper, Error } from "./login.styled";
+import {  Wrapper } from "./login.styled";
 import { Grid } from "@mui/material";
 import * as yup from "yup";
+import Input from './../../components/input/input';
+import Button from './../../components/button/button';
+import FormError from './../../components/form-error/form-error';
 
 export default function Login() {
   const [data, setData] = useState({
@@ -10,7 +13,7 @@ export default function Login() {
   });
 
   const [error, setError] = useState("");
-
+  console.log(error);
   const handleChange = useCallback(
     ({ target }: any) => {
       setData((prevData) => ({
@@ -31,7 +34,7 @@ export default function Login() {
       await schema.validate(data);
       setError("");
     } catch (error: any) {
-      setError(error.errors[0]);
+      setError(error.errors);
     }
   }, [data]);
 
@@ -61,7 +64,7 @@ export default function Login() {
           onChange={handleChange}
         />
         <Button onClick={handleSend}>Entrar</Button>
-        <Error>{error}</Error>
+        {error ? <FormError message={error} /> : null}
       </Grid>
     </Wrapper>
   );
