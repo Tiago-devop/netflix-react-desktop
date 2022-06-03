@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-import {  Wrapper } from "./login.styled";
+import { Wrapper } from "./login.styled";
 import { Grid } from "@mui/material";
 import * as yup from "yup";
-import Input from './../../components/input/input';
-import Button from './../../components/button/button';
-import FormError from './../../components/form-error/form-error';
+import Input from "./../../components/input/input";
+import Button from "./../../components/button/button";
+import FormError from "./../../components/form-error/form-error";
 
 export default function Login() {
   const [data, setData] = useState({
