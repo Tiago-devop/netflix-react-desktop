@@ -1,9 +1,8 @@
 import { palette } from "./palette";
-import { blackFriday } from "./blackFriday";
-
+import { layout } from "./layout";
 const theme = {
   palette,
-  blackFriday,
+  layout,
 };
 
 export default theme;

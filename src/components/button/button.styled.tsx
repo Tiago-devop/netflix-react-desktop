@@ -1,11 +1,19 @@
 import styled, { css } from "styled-components";
 
 export const Button = styled.button`
-  width: 100%;
-  padding: 9px;
-  margin: 0 0 22px;
-  border-radius: ${(props) => props.theme.palette.borders.corners};
-  background: ${(props) => props.theme.palette.core.primary};
-  color: ${(props) => props.theme.palette.typography.primary};
-  border: 0;
+  ${(props) => {
+    const {
+      theme: { palette, layout },
+    } = props;
+    const { core, typography } = palette;
+    return css`
+      width: 100%;
+      color: ${typography.primary};
+      padding: 9px;
+      margin: 0 0 22px;
+      border-radius: ${layout.border.medium};
+      background: ${core.primary};
+      border: 0;
+    `;
+  }};
 `;

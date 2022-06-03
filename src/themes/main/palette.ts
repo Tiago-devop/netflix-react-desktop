@@ -9,12 +9,12 @@ const typography = {
   contrast: "#868d96",
 };
 
-const borders = {
-  corners: "5px",
+const border = {
+  default: "#e0e0e0",
 };
 
 export const palette = {
   core,
   typography,
-  borders,
+  border,
 };
