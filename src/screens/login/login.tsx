@@ -63,9 +63,7 @@ export default function Login() {
           type="password"
           onChange={handleChange}
         />
-        <Button blackFriday={false} onClick={handleSend}>
-          Entrar
-        </Button>
+        <Button onClick={handleSend}>Entrar</Button>
         {error ? <FormError message={error} /> : null}
       </Grid>
     </Wrapper>
