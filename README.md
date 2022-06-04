@@ -1,13 +1,12 @@
 # NetFlix React Desktop
 
 ## Used Tools
-
-Reactjs
-Typescript
-Redux
-Yup
-React router dom
-Styled components
+#### Reactjs
+#### Typescript
+#### Redux
+#### Yup
+#### React router dom
+#### Styled components
 
 ### `npm install`
   
