@@ -14,7 +14,6 @@ export const Button = styled.button`
       border-radius: ${layout.border.medium};
       background: ${core.primary};
       border: 0;
-      font-family: "Open Sans", sans-serif;
     `;
   }};
 `;
