@@ -5,6 +5,9 @@ import * as yup from "yup";
 import Input from "./../../components/input/input";
 import Button from "./../../components/button/button";
 import FormError from "./../../components/form-error/form-error";
+import { useDispatch, useSelector } from "react-redux";
+import { authenticated } from "../../store/user/user.selector";
+import userSlice from "../../store/user/user.slice";
 
 export default function Login() {
   const [data, setData] = useState({
@@ -14,6 +17,10 @@ export default function Login() {
 
   const [error, setError] = useState("");
   console.log(error);
+
+  const dispatch = useDispatch();
+  const userAuthenticated = useSelector(authenticated);
+
   const handleChange = useCallback(
     ({ target }: any) => {
       setData((prevData) => ({
@@ -33,14 +40,16 @@ export default function Login() {
 
       await schema.validate(data);
       setError("");
+
+      dispatch(userSlice.actions.authenticated(true));
     } catch (error: any) {
       setError(error.errors);
     }
   }, [data]);
 
   useEffect(() => {
-    console.log(data);
-  }, [data]);
+    console.log(userAuthenticated);
+  }, [userAuthenticated]);
 
   return (
     <Wrapper container justifyContent="center" alignContent="center">
