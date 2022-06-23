@@ -7,7 +7,10 @@
 #### Yup
 #### React router dom
 #### Styled components
-
+#### Emotion react/styled
+#### Axios
+#### Redux Saga
+#### Redux Js toolkit
 ### `npm install`
   
   will install the dependencies
