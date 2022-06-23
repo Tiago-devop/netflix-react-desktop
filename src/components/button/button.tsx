@@ -1,5 +1,11 @@
-import { Button as ButtonStyled } from "./button.styled";
+import React from 'react';
+import { Props } from 'components/button/button.type';
+import { ButtonStyled } from './button.styled';
 
-const Button = (props: any) => <ButtonStyled {...props}></ButtonStyled>;
-
-export default Button;
+export default function Button({ onClick, children }: Props) {
+  return (
+    <ButtonStyled onClick={onClick}>
+      {children}
+    </ButtonStyled>
+  );
+}
