@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Input from 'components/input/input';
 import Button from 'components/button/button';
 import FormError from 'components/form-error/form-error';
-import { authenticated } from 'store/user/user.selector';
+import { tokenSelector } from 'store/user/user.selector';
 import userSlice from 'store/user/user.slice';
 import { Error } from 'types/yup';
 import { Wrapper } from './login.styled';
@@ -23,7 +23,7 @@ export default function Form() {
   const [error, setError] = useState('');
 
   const dispatch = useDispatch();
-  const userAuthenticated = useSelector(authenticated);
+  const userAuthenticated = useSelector(tokenSelector);
 
   const handleChange = useCallback(
     ({ target }: ChangeEvent<HTMLInputElement>) => {
