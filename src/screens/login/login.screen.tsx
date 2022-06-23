@@ -1,8 +1,8 @@
 import React, {
   useState,
-  useEffect,
   ChangeEvent,
   useCallback,
+  useEffect,
 } from 'react';
 import { Grid } from '@mui/material';
 import * as yup from 'yup';
@@ -13,6 +13,8 @@ import FormError from 'components/form-error/form-error';
 import { tokenSelector } from 'store/user/user.selector';
 import userSlice from 'store/user/user.slice';
 import { Error } from 'types/yup';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { MOVIES_LIST_URL } from 'screens/movies-list/movies-list.type';
 import { Wrapper } from './login.styled';
 
 export default function Form() {
@@ -23,7 +25,9 @@ export default function Form() {
   const [error, setError] = useState('');
 
   const dispatch = useDispatch();
-  const userAuthenticated = useSelector(tokenSelector);
+  const token = useSelector(tokenSelector);
+  const navigate = useNavigate();
+  const from = useLocation();
 
   const handleChange = useCallback(
     ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -62,12 +66,13 @@ export default function Form() {
     [data],
   );
 
-  useEffect(
-    () => {
-      console.log(userAuthenticated);
-    },
-    [userAuthenticated],
-  );
+  useEffect(() => {
+    if (token) {
+      navigate(MOVIES_LIST_URL, {
+        state: { from },
+      });
+    }
+  }, [token]);
 
   return (
     <Wrapper
