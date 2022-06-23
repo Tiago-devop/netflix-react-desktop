@@ -1,3 +1,7 @@
-const MoviesList = () => <p>Movies List</p>;
+import React from 'react';
 
-export default MoviesList;
+export default function MoviesList() {
+  return (
+    <p>Hello World!</p>
+  );
+}
