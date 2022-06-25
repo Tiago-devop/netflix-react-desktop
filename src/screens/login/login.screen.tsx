@@ -16,6 +16,7 @@ import { Error } from 'types/yup';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MOVIES_LIST_URL } from 'screens/movies-list/movies-list.type';
 import { USER_TOKEN_COOKIE } from 'store/user/user.type';
+
 import { Wrapper } from './login.styled';
 
 export default function Form() {
