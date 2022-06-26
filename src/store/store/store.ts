@@ -1,5 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
+import { all } from 'redux-saga/effects';
+import showsSaga from 'store/shows/shows.saga';
 import userSaga from 'store/user/user.saga';
 import userSlice from '../user/user.slice';
 
@@ -12,6 +14,13 @@ const store = configureStore({
   middleware: [saga],
 });
 
-saga.run(userSaga);
+function* storeSaga() {
+  yield all([
+    ...userSaga,
+    ...showsSaga,
+  ]);
+}
+
+saga.run(storeSaga);
 
 export default store;
