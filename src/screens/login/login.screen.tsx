@@ -1,8 +1,7 @@
 import React, {
   useState,
   ChangeEvent,
-  useCallback,
-  useEffect,
+  useCallback, useEffect,
 } from 'react';
 import { Grid } from '@mui/material';
 import * as yup from 'yup';
@@ -14,9 +13,8 @@ import { errorSelector, tokenSelector } from 'store/user/user.selector';
 import userSlice from 'store/user/user.slice';
 import { Error } from 'types/yup';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { MOVIES_LIST_URL } from 'screens/movies-list/movies-list.type';
+import { SHOWS_URL } from 'screens/shows/shows.type';
 import { USER_TOKEN_COOKIE } from 'store/user/user.type';
-
 import { Wrapper } from './login.styled';
 
 export default function Form() {
@@ -28,7 +26,7 @@ export default function Form() {
 
   const dispatch = useDispatch();
   const token = useSelector(tokenSelector);
-  const useError = useSelector(errorSelector);
+  const userError = useSelector(errorSelector);
   const navigate = useNavigate();
   const from = useLocation();
 
@@ -69,23 +67,29 @@ export default function Form() {
     [data],
   );
 
-  useEffect(() => {
-    if (token) {
-      navigate(MOVIES_LIST_URL, {
-        state: { from },
-      });
-    }
-  }, [token]);
+  useEffect(
+    () => {
+      if (token) {
+        navigate(SHOWS_URL, {
+          state: { from },
+        });
+      }
+    },
+    [token],
+  );
 
-  useEffect(() => {
-    const localToken = localStorage.getItem(USER_TOKEN_COOKIE);
+  useEffect(
+    () => {
+      const localToken = localStorage.getItem(USER_TOKEN_COOKIE);
 
-    if (localToken) {
-      dispatch(userSlice.actions.setData({
-        token: localToken,
-      }));
-    }
-  }, []);
+      if (localToken) {
+        dispatch(userSlice.actions.setData({
+          token: localToken,
+        }));
+      }
+    },
+    [],
+  );
 
   return (
     <Wrapper
@@ -106,7 +110,7 @@ export default function Form() {
           placeholder="Senha"
           onChange={handleChange}
         />
-        <FormError message={error || useError} />
+        <FormError message={error || userError} />
         <Button onClick={handleSend}>Entrar</Button>
       </Grid>
     </Wrapper>
